@@ -23,4 +23,9 @@ public class HomePage {
         driver.findElement(searchSubmit).click();
         return new SearchResultsPage(driver);
     }
+    public SearchResultsPage sroductByCriteria(String criteriaValue) {
+        driver.findElement(searchInput).sendKeys(criteriaValue);
+        driver.findElement(searchSubmit).click();
+        return new SearchResultsPage(driver);
+    }
 }
