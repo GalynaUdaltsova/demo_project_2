@@ -16,7 +16,7 @@ public class BaseTest {
     public void openBrowser(){
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-        driver.get("https://rozetka.com.ua/ua/");
+        driver.get(HomePage.HOME_PAGE_URL);
         driver.manage().window().maximize();
     }
 
