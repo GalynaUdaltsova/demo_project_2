@@ -1,8 +1,10 @@
 import org.openqa.selenium.By;
 import org.testng.Assert;
+import org.testng.SkipException;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import rozetka.HomePage;
+import rozetka.SearchResultsPage;
 
 public class HomePageTest extends BaseTest{
 
@@ -14,15 +16,19 @@ public class HomePageTest extends BaseTest{
                 { "Apple iPhone 11"},
                 { "Xiaomi Redmi 9A"},
                 { "Samsung Galaxy"},
-                { "Зеркало для макияжа Xiaomi"},
-                { "Набор инструментов"},
+                { "MacBook"},
+                { "abcdefghijklmnopqrstuvwxyz"},
         };
     }
 
     @Test(dataProvider = "search")
-    public void search(String item){
+    public void search(String item) throws SkipException {
         HomePage homePage = new HomePage(driver);
         homePage.searchProductByCriteria(item);
+        SearchResultsPage searchResultsPage = new SearchResultsPage(driver);
+        if (searchResultsPage.count() == 0) {
+            throw new SkipException("Empty");
+        }
         String titleFirst = driver.findElement(titleFirstItem).getText();
         Assert.assertTrue(titleFirst.contains(item));
     }
