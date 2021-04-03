@@ -1,3 +1,5 @@
+package rozetka;
+
 import org.openqa.selenium.WebDriver;
 
 public class CartPage {

@@ -1,9 +1,7 @@
+package rozetka;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.testng.Assert;
-
-import java.util.List;
 
 public class SearchResultsPage {
     protected WebDriver driver;
@@ -15,7 +13,7 @@ public class SearchResultsPage {
         this.driver = driver;
     }
 
-    public ProductPage openToProductCard() {
+    public ProductPage openProductCard() {
         driver.findElement(item).click();
         return new ProductPage(driver);
     }
