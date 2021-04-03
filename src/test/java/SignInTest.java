@@ -1,4 +1,5 @@
 import google.GooglePage;
+import org.openqa.selenium.ElementClickInterceptedException;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import rozetka.HomePage;
@@ -17,11 +18,10 @@ public class SignInTest extends BaseTest {
         Assert.assertEquals(title, SignInPage.CABINET_PAGE_URL);
     }
 
-    @Test
+    @Test(expectedExceptions = ElementClickInterceptedException.class)
     public void checkLoginWithoutGoogleCredentials() {
         HomePage homePage = new HomePage(driver);
         homePage.login();
-        String title = driver.getTitle();
-        Assert.assertNotEquals(title, SignInPage.CABINET_PAGE_URL);
+        homePage.enterToCabinet();
     }
 }
