@@ -3,6 +3,9 @@ package rozetka;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,6 +39,7 @@ public class SearchResultsPage {
     }
 
     public List<WebElement> clickBtns(int count) {
+        new WebDriverWait(driver, 20).until(ExpectedConditions.elementToBeClickable(buyBtn));
         List<WebElement> buyBtns = driver.findElements(buyBtn);
         for (int i = 0; i < count; i++) {
             buyBtns.get(i).click();
@@ -44,7 +48,9 @@ public class SearchResultsPage {
     }
 
     public void goToCart() {
+        new WebDriverWait(driver, 20).until(ExpectedConditions.elementToBeClickable(cartBtn));
         driver.findElement(cartBtn).click();
+        new WebDriverWait(driver, 20).until(ExpectedConditions.visibilityOfElementLocated(cartHeader));
         driver.findElement(cartHeader);
     }
 
