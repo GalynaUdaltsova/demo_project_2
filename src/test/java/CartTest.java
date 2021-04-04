@@ -13,8 +13,8 @@ public class CartTest extends BaseTest {
         HomePage homePage = new HomePage(driver);
         homePage.showProductByCriteria("Xiaomi");
         SearchResultsPage searchResultsPage = new SearchResultsPage(driver);
-        List<String> itemsTitles = searchResultsPage.getItems(5);
-        searchResultsPage.addProductsToCart(5);
+        List<String> itemsTitles = searchResultsPage.getItems(3);
+        searchResultsPage.addProductsToCart(3);
         searchResultsPage.openCart();
         List<String> itemsTitlesInCart = searchResultsPage.getCartProductTitles();
         Collections.reverse(itemsTitlesInCart);
