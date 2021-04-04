@@ -11,6 +11,7 @@ public class BaseTest {
     @BeforeSuite
     public void setUp() {
         System.setProperty("webdriver.chrome.driver", "browserDrivers/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "browserDrivers/chromedriver");
     }
 
     @BeforeMethod

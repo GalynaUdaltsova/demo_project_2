@@ -5,6 +5,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import rozetka.CartPage;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ProductPage {
     protected WebDriver driver;
 
