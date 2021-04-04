@@ -6,8 +6,8 @@ import rozetka.SearchResultsPage;
 
 public class SearchResultsTest extends BaseTest {
 
-    @DataProvider(name = "search")
-    public Object[][] search() {
+    @DataProvider(name = "addToCart")
+    public Object[][] addToCart() {
         return new Object[][] {
                 { "Телевізор LG"},
                 { "Телевізор Samsung"},
@@ -16,7 +16,7 @@ public class SearchResultsTest extends BaseTest {
         };
     }
 
-    @Test(dataProvider = "search")
+    @Test(dataProvider = "addToCart")
     public void addToCart(String product) {
         HomePage homePage = new HomePage(driver);
         homePage.searchProductByCriteria(product);

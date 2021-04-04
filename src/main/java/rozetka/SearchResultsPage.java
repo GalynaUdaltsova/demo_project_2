@@ -2,6 +2,8 @@ package rozetka;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import java.util.ArrayList;
 
 public class SearchResultsPage {
     protected WebDriver driver;
@@ -16,6 +18,11 @@ public class SearchResultsPage {
     public ProductPage openProductCard() {
         driver.findElement(item).click();
         return new ProductPage(driver);
+    }
+
+    public int count() {
+        ArrayList<WebElement> elements = (ArrayList<WebElement>) driver.findElements(item);
+        return elements.toArray().length;
     }
 }
 
