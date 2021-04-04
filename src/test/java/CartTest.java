@@ -28,10 +28,10 @@ public class CartTest extends BaseTest {
         HomePage homePage = new HomePage(driver);
         homePage.showProductByCriteria("Xiaomi");
         SearchResultsPage searchResultsPage = new SearchResultsPage(driver);
-        searchResultsPage.addProductsToCart(1);
+        searchResultsPage.addProductsToCart(2);
         searchResultsPage.openCart();
         CartPage cartPage = new CartPage(driver);
-        cartPage.deleteProductsFromCart(1);
+        cartPage.deleteProductsFromCart(2);
         Assert.assertTrue(cartPage.isCartEmpty());
     }
 }
