@@ -2,6 +2,8 @@ package rozetka;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class CartPage {
     protected WebDriver driver;
@@ -23,7 +25,9 @@ public class CartPage {
 
     public void del(int count) {
         for (int i = 0; i < count; i++) {
+            new WebDriverWait(driver, 20).until(ExpectedConditions.elementToBeClickable(cartActionBtn));
             driver.findElement(cartActionBtn).click();
+            new WebDriverWait(driver, 20).until(ExpectedConditions.elementToBeClickable(trashIcon));
             driver.findElement(trashIcon).click();
         }
     }

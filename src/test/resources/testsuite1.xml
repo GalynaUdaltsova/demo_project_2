@@ -4,7 +4,6 @@
     <test name="testScope" >
         <classes>
             <class name="rozetka.SearchResultsPage" />
-            <class name="ProductTest" />
         </classes>
     </test>
 </suite>
