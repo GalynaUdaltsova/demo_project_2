@@ -3,28 +3,23 @@ package rozetka;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import rozetka.CartPage;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class ProductPage {
-    protected WebDriver driver;
+    private static final By BUY_BUTTON = new By.ByXPath("//button[@aria-label='Купити']");
 
-    private By buyButton = new By.ByXPath("//button[@aria-label='Купити']");
+    protected WebDriver driver;
 
     public ProductPage(WebDriver driver) {
         this.driver = driver;
     }
 
-    public CartPage addToCart() {
-        try{
-            WebElement element = driver.findElement(buyButton);
+    public void byProduct() {
+        try {
+            WebElement element = driver.findElement(BUY_BUTTON);
             element.click();
         } catch (org.openqa.selenium.StaleElementReferenceException ex) {
-            WebElement element = driver.findElement(buyButton);
+            WebElement element = driver.findElement(BUY_BUTTON);
             element.click();
         }
-        return new CartPage(driver);
     }
 }

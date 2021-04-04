@@ -24,9 +24,9 @@ public class HomePageTest extends BaseTest{
     @Test(dataProvider = "search")
     public void search(String item) throws SkipException {
         HomePage homePage = new HomePage(driver);
-        homePage.searchProductByCriteria(item);
+        homePage.showProductByCriteria(item);
         SearchResultsPage searchResultsPage = new SearchResultsPage(driver);
-        if (searchResultsPage.count() == 0) {
+        if (searchResultsPage.itemsCount() == 0) {
             throw new SkipException("Empty");
         }
         String titleFirst = driver.findElement(titleFirstItem).getText();

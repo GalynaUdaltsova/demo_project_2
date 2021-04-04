@@ -19,10 +19,10 @@ public class SearchResultsTest extends BaseTest {
     @Test(dataProvider = "addToCart")
     public void addToCart(String product) {
         HomePage homePage = new HomePage(driver);
-        homePage.searchProductByCriteria(product);
+        homePage.showProductByCriteria(product);
         SearchResultsPage searchResultsPage = new SearchResultsPage(driver);
         searchResultsPage.openProductCard();
         ProductPage productPage = new ProductPage(driver);
-        productPage.addToCart();
+        productPage.byProduct();
     }
 }
