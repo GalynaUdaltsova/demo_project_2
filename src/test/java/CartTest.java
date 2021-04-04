@@ -1,5 +1,6 @@
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import rozetka.CartPage;
 import rozetka.HomePage;
 import rozetka.SearchResultsPage;
 import java.util.Collections;
@@ -22,4 +23,15 @@ public class CartTest extends BaseTest {
         }
     }
 
+    @Test
+    public void deleteFromCart() {
+        HomePage homePage = new HomePage(driver);
+        homePage.searchProductByCriteria("Xiaomi");
+        SearchResultsPage searchResultsPage = new SearchResultsPage(driver);
+        searchResultsPage.clickBtns(1);
+        searchResultsPage.goToCart();
+        CartPage cartPage = new CartPage(driver);
+        cartPage.del(1);
+        Assert.assertTrue(cartPage.emptyCart());
+    }
 }
