@@ -57,5 +57,10 @@ public class SearchResultsPage {
         System.out.println(itemsTitlesInCart);
         return itemsTitlesInCart;
     }
+
+    public int count() {
+        ArrayList<WebElement> elements = (ArrayList<WebElement>) driver.findElements(item);
+        return elements.toArray().length;
+    }
 }
 
