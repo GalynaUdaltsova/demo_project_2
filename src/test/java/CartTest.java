@@ -11,14 +11,14 @@ public class CartTest extends BaseTest {
     @Test
     public void addToCart() {
         HomePage homePage = new HomePage(driver);
-        homePage.searchProductByCriteria("Xiaomi");
+        homePage.showProductByCriteria("Xiaomi");
         SearchResultsPage searchResultsPage = new SearchResultsPage(driver);
-        List<String> itemsTitles = searchResultsPage.findItems(5);
-        searchResultsPage.clickBtns(5);
-        searchResultsPage.goToCart();
-        List<String> itemsTitlesInCart = searchResultsPage.findElements();
+        List<String> itemsTitles = searchResultsPage.getItems(5);
+        searchResultsPage.addProductsToCart(5);
+        searchResultsPage.openCart();
+        List<String> itemsTitlesInCart = searchResultsPage.getCartProductTitles();
         Collections.reverse(itemsTitlesInCart);
-        for (int i = 0; i < itemsTitlesInCart.toArray().length; i++) {
+        for (int i = 0; i < itemsTitlesInCart.size(); i++) {
             Assert.assertEquals(itemsTitles.get(i), itemsTitlesInCart.get(i));
         }
     }
@@ -26,12 +26,12 @@ public class CartTest extends BaseTest {
     @Test
     public void deleteFromCart() {
         HomePage homePage = new HomePage(driver);
-        homePage.searchProductByCriteria("Xiaomi");
+        homePage.showProductByCriteria("Xiaomi");
         SearchResultsPage searchResultsPage = new SearchResultsPage(driver);
-        searchResultsPage.clickBtns(1);
-        searchResultsPage.goToCart();
+        searchResultsPage.addProductsToCart(1);
+        searchResultsPage.openCart();
         CartPage cartPage = new CartPage(driver);
-        cartPage.del(1);
-        Assert.assertTrue(cartPage.emptyCart());
+        cartPage.deleteProductsFromCart(1);
+        Assert.assertTrue(cartPage.isCartEmpty());
     }
 }
