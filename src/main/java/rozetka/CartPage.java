@@ -6,8 +6,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class CartPage {
-    public static final By CART_ACTION_BUTTON = new By.ByXPath("//button[contains(@id,'cartProductActions')]");
-    public static final By TRASH_ICON_BUTTON = new By.ByXPath("//li[@class='context-menu__item']");
     public static final By EMPTY_CART_TITLE = new By.ByXPath("//h4[@class='cart-dummy__heading']");
 
     protected WebDriver driver;
@@ -18,10 +16,12 @@ public class CartPage {
 
     public void deleteProductsFromCart(int count) {
         for (int i = 0; i < count; i++) {
-            new WebDriverWait(driver, 20).until(ExpectedConditions.elementToBeClickable(CART_ACTION_BUTTON));
-            driver.findElement(CART_ACTION_BUTTON).click();
-            new WebDriverWait(driver, 20).until(ExpectedConditions.elementToBeClickable(TRASH_ICON_BUTTON));
-            driver.findElement(TRASH_ICON_BUTTON).click();
+            By cartActionBtn = new By.ByXPath("//button[contains(@id,'cartProductActions')]");
+            By delBtn = new By.ByXPath("//ul[contains(@id,'cartProductActions')]//button[contains(text(),'Видалити')]");
+            new WebDriverWait(driver, 30).until(ExpectedConditions.elementToBeClickable(cartActionBtn));
+            driver.findElement(cartActionBtn).click();
+            new WebDriverWait(driver, 30).until(ExpectedConditions.elementToBeClickable(delBtn));
+            driver.findElement(delBtn).click();
         }
     }
 
