@@ -4,13 +4,16 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class ProductPage {
+public class ProductPage extends BasePage{
     private static final By BUY_BUTTON = new By.ByXPath("//button[@aria-label='Купити']");
 
-    protected WebDriver driver;
-
     public ProductPage(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
+    }
+
+    @Override
+    public void checkPage() {
+
     }
 
     public void byProduct() {

@@ -3,14 +3,17 @@ package rozetka;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class SignInPage {
+public class SignInPage extends BasePage{
     public static final String CABINET_PAGE_URL = "ROZETKA — Особисті дані | Особистий кабінет";
     private static final By GOOGLE = new By.ByXPath("//button[contains(text(), ' Google')]");
 
-    protected WebDriver driver;
-
     public SignInPage(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
+    }
+
+    @Override
+    public void checkPage() {
+
     }
 
     public void login() {
