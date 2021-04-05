@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 public class HomePage extends BasePage {
     public static final String HOME_PAGE_URL = "https://rozetka.com.ua/ua/";
@@ -17,21 +18,26 @@ public class HomePage extends BasePage {
     private static final By PERSONAL_DATA = new By.ByXPath("//h1[@class='cabinet__heading']");
 
     public HomePage(WebDriver driver) {
-        super(driver, HOME_PAGE_TITLE);
+        super(driver);
     }
 
-    public void login(){
+    @Override
+    public void checkPage() {
+        String title = driver.getTitle();
+        Assert.assertEquals(title, HOME_PAGE_TITLE);
+    }
+
+    public void login() {
         driver.get(HOME_PAGE_URL);
         driver.findElement(USER_ICON).click();
         SignInPage signInPage = new SignInPage(driver);
         signInPage.login();
     }
 
-    public void enterToCabinet(){
+    public void enterToCabinet() {
         driver.findElement(BURGER_MENU).click();
         driver.findElement(PERSONAL_INFO).click();
-        new WebDriverWait(driver, 20)
-                .until(ExpectedConditions.visibilityOfElementLocated(PERSONAL_DATA));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(PERSONAL_DATA));
     }
 
     public void showProductByCriteria(String criteriaValue) {

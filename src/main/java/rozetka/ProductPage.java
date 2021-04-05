@@ -3,14 +3,19 @@ package rozetka;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 
-public class ProductPage {
+public class ProductPage extends BasePage {
     private static final By BUY_BUTTON = new By.ByXPath("//button[@aria-label='Купити']");
-
-    protected WebDriver driver;
+    private static final By PRODUCT_SECTION = new By.ByXPath("//product-tab-main");
 
     public ProductPage(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
+    }
+
+    @Override
+    public void checkPage() {
+        Assert.assertTrue(driver.findElement(PRODUCT_SECTION).isDisplayed());
     }
 
     public void byProduct() {

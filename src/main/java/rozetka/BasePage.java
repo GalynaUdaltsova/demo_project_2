@@ -1,19 +1,18 @@
 package rozetka;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
-public class BasePage {
+public abstract class BasePage {
     protected WebDriver driver;
-    private String pageTitle;
+    WebDriverWait wait;
 
-    public BasePage(WebDriver driver, String pageTitle) {
+    public BasePage(WebDriver driver) {
         this.driver = driver;
-        this.pageTitle = pageTitle;
+        checkPage();
+        wait = new WebDriverWait(driver, 10);
     }
 
-    public void checkPage() {
-        String title = driver.getTitle();
-        Assert.assertEquals(title, pageTitle);
-    }
+    public abstract void checkPage();
 }

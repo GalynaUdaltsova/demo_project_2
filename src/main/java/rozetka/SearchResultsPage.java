@@ -4,13 +4,13 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
+import org.testng.SkipException;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class SearchResultsPage {
-    protected WebDriver driver;
+public class SearchResultsPage extends BasePage {
 
     private static final By ITEM = By.xpath("//span[@class='goods-tile__title'][1]");
     private static final By CART_BUTTON = new By.ByXPath("//rz-cart/button");
@@ -18,9 +18,16 @@ public class SearchResultsPage {
     private static final By ITEM_TITLE = new By.ByXPath("//div[@class='goods-tile__inner']//span[@class='goods-tile__title']");
     private static final By ADD_TO_CART_BUTTON = new By.ByXPath("//button[@class='buy-button goods-tile__buy-button']");
     private static final By TITLE_IN_CART = new By.ByXPath("//div[@class='cart-product']//a[@class='cart-product__title']");
+    private static final By TITLE_FIRST_ITEM = By.xpath("//span[@class='goods-tile__title'][1]");
+    private static final By CATALOG_GRID = new By.ByXPath("//ul[@class='catalog-grid']");
 
     public SearchResultsPage(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
+    }
+
+    @Override
+    public void checkPage() {
+        Assert.assertTrue(driver.findElement(CATALOG_GRID).isDisplayed());
     }
 
     public void openProductCard() {
@@ -37,7 +44,7 @@ public class SearchResultsPage {
     }
 
     public void addProductsToCart(int count) {
-        new WebDriverWait(driver, 20).until(ExpectedConditions.elementToBeClickable(ADD_TO_CART_BUTTON));
+        wait.until(ExpectedConditions.elementToBeClickable(ADD_TO_CART_BUTTON));
         List<WebElement> addProductToCartElements = driver.findElements(ADD_TO_CART_BUTTON);
         for (int i = 0; i < count; i++) {
             addProductToCartElements.get(i).click();
@@ -45,9 +52,9 @@ public class SearchResultsPage {
     }
 
     public void openCart() {
-        new WebDriverWait(driver, 20).until(ExpectedConditions.elementToBeClickable(CART_BUTTON));
+        wait.until(ExpectedConditions.elementToBeClickable(CART_BUTTON));
         driver.findElement(CART_BUTTON).click();
-        new WebDriverWait(driver, 20).until(ExpectedConditions.visibilityOfElementLocated(CART_HEADER));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(CART_HEADER));
         driver.findElement(CART_HEADER);
     }
 
@@ -62,6 +69,17 @@ public class SearchResultsPage {
 
     public int itemsCount() {
         return driver.findElements(ITEM).size();
+    }
+
+    public boolean isResultEmpty() {
+        return itemsCount() == 0;
+    }
+
+    public String getFirstResultTitle() {
+        if (itemsCount() == 0) {
+            throw new SkipException("Empty");
+        }
+        return driver.findElement(TITLE_FIRST_ITEM).getText();
     }
 }
 
