@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class HomePage extends BasePage {
+public class HomePage extends BasePage{
     public static final String HOME_PAGE_URL = "https://rozetka.com.ua/ua/";
     private static final String HOME_PAGE_TITLE = "Інтернет-магазин ROZETKA™: офіційний сайт найпопулярнішого " +
             "онлайн-гіпермаркету в Україні";
@@ -17,7 +17,12 @@ public class HomePage extends BasePage {
     private static final By PERSONAL_DATA = new By.ByXPath("//h1[@class='cabinet__heading']");
 
     public HomePage(WebDriver driver) {
-        super(driver, HOME_PAGE_TITLE);
+        super(driver);
+    }
+
+    @Override
+    public void checkPage() {
+
     }
 
     public void login(){

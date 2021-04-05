@@ -9,8 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SearchResultsPage {
-    protected WebDriver driver;
+public class SearchResultsPage extends BasePage{
 
     private static final By ITEM = By.xpath("//span[@class='goods-tile__title'][1]");
     private static final By CART_BUTTON = new By.ByXPath("//rz-cart/button");
@@ -20,7 +19,7 @@ public class SearchResultsPage {
     private static final By TITLE_IN_CART = new By.ByXPath("//div[@class='cart-product']//a[@class='cart-product__title']");
 
     public SearchResultsPage(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
     }
 
     public void openProductCard() {
@@ -62,6 +61,11 @@ public class SearchResultsPage {
 
     public int itemsCount() {
         return driver.findElements(ITEM).size();
+    }
+
+    @Override
+    public void checkPage() {
+
     }
 }
 
