@@ -4,7 +4,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.SkipException;
 
@@ -19,7 +18,8 @@ public class SearchResultsPage extends BasePage {
     private static final By ITEM_TITLE = new By.ByXPath("//div[@class='goods-tile__inner']//span[@class='goods-tile__title']");
     private static final By ADD_TO_CART_BUTTON = new By.ByXPath("//button[@class='buy-button goods-tile__buy-button']");
     private static final By TITLE_IN_CART = new By.ByXPath("//div[@class='cart-product']//a[@class='cart-product__title']");
-    private By titleFirstItem = By.xpath("//span[@class='goods-tile__title'][1]");
+    private static final By TITLE_FIRST_ITEM = By.xpath("//span[@class='goods-tile__title'][1]");
+    private static final By CATALOG_GRID = new By.ByXPath("//ul[@class='catalog-grid']");
 
     public SearchResultsPage(WebDriver driver) {
         super(driver);
@@ -27,8 +27,7 @@ public class SearchResultsPage extends BasePage {
 
     @Override
     public void checkPage() {
-        By catalogGrid = new By.ByXPath("//ul[@class='catalog-grid']");
-        Assert.assertTrue(driver.findElement(catalogGrid).isDisplayed());
+        Assert.assertTrue(driver.findElement(CATALOG_GRID).isDisplayed());
     }
 
     public void openProductCard() {
@@ -80,7 +79,7 @@ public class SearchResultsPage extends BasePage {
         if (itemsCount() == 0) {
             throw new SkipException("Empty");
         }
-        return driver.findElement(titleFirstItem).getText();
+        return driver.findElement(TITLE_FIRST_ITEM).getText();
     }
 }
 

@@ -7,6 +7,7 @@ import org.testng.Assert;
 
 public class ProductPage extends BasePage {
     private static final By BUY_BUTTON = new By.ByXPath("//button[@aria-label='Купити']");
+    private static final By PRODUCT_SECTION = new By.ByXPath("//product-tab-main");
 
     public ProductPage(WebDriver driver) {
         super(driver);
@@ -14,8 +15,7 @@ public class ProductPage extends BasePage {
 
     @Override
     public void checkPage() {
-        By productSection = new By.ByXPath("//product-tab-main");
-        Assert.assertTrue(driver.findElement(productSection).isDisplayed());
+        Assert.assertTrue(driver.findElement(PRODUCT_SECTION).isDisplayed());
     }
 
     public void byProduct() {
