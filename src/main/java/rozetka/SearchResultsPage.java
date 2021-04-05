@@ -1,5 +1,6 @@
 package rozetka;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -30,10 +31,12 @@ public class SearchResultsPage extends BasePage {
         Assert.assertTrue(driver.findElement(CATALOG_GRID).isDisplayed());
     }
 
+    @Step("Open product card")
     public void openProductCard() {
         driver.findElement(ITEM).click();
     }
 
+    @Step("Get items")
     public List<String> getItems(int count) {
         List<WebElement> elements = driver.findElements(ITEM_TITLE);
         List<String> titles = new ArrayList<>();
@@ -43,6 +46,7 @@ public class SearchResultsPage extends BasePage {
         return titles;
     }
 
+    @Step("Add products to cart")
     public void addProductsToCart(int count) {
         wait.until(ExpectedConditions.elementToBeClickable(ADD_TO_CART_BUTTON));
         List<WebElement> addProductToCartElements = driver.findElements(ADD_TO_CART_BUTTON);
@@ -51,6 +55,7 @@ public class SearchResultsPage extends BasePage {
         }
     }
 
+    @Step("Open cart")
     public void openCart() {
         wait.until(ExpectedConditions.elementToBeClickable(CART_BUTTON));
         driver.findElement(CART_BUTTON).click();
@@ -58,6 +63,7 @@ public class SearchResultsPage extends BasePage {
         driver.findElement(CART_HEADER);
     }
 
+    @Step("Get cart product titles")
     public List<String> getCartProductTitles() {
         List<WebElement> elements = driver.findElements(TITLE_IN_CART);
         List<String> titles = new ArrayList<>();
@@ -67,14 +73,12 @@ public class SearchResultsPage extends BasePage {
         return titles;
     }
 
+    @Step("Items count")
     public int itemsCount() {
         return driver.findElements(ITEM).size();
     }
 
-    public boolean isResultEmpty() {
-        return itemsCount() == 0;
-    }
-
+    @Step("Get first result title")
     public String getFirstResultTitle() {
         if (itemsCount() == 0) {
             throw new SkipException("Empty");

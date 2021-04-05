@@ -1,5 +1,6 @@
 package rozetka;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -17,14 +18,12 @@ public class CartPage extends BasePage {
 
     @Override
     public void checkPage() {
-
         Assert.assertTrue(driver.findElement(CART_HEADER).isDisplayed());
     }
 
+    @Step("Delete products from cart")
     public void deleteProductsFromCart(int count) {
         for (int i = 0; i < count; i++) {
-//            By cartActionBtn = new By.ByXPath("//button[contains(@id,'cartProductActions')]");
-//            By delBtn = new By.ByXPath("//ul[contains(@id,'cartProductActions')]//button[contains(text(),'Видалити')]");
             wait.until(ExpectedConditions.elementToBeClickable(CART_ACTION_BTN));
             driver.findElement(CART_ACTION_BTN).click();
             wait.until(ExpectedConditions.elementToBeClickable(DEL_BTN));
