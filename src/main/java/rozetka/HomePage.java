@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 public class HomePage extends BasePage{
     public static final String HOME_PAGE_URL = "https://rozetka.com.ua/ua/";
@@ -22,7 +23,8 @@ public class HomePage extends BasePage{
 
     @Override
     public void checkPage() {
-
+        String title = driver.getTitle();
+        Assert.assertEquals(title, HOME_PAGE_TITLE);
     }
 
     public void login(){

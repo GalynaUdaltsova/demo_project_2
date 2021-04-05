@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import org.testng.SkipException;
 
 import java.util.ArrayList;
@@ -22,6 +23,12 @@ public class SearchResultsPage extends BasePage{
 
     public SearchResultsPage(WebDriver driver) {
         super(driver);
+    }
+
+    @Override
+    public void checkPage() {
+        By catalogGrid = new By.ByXPath("//ul[@class='catalog-grid']");
+        Assert.assertTrue(driver.findElement(catalogGrid).isDisplayed());
     }
 
     public void openProductCard() {
@@ -67,11 +74,6 @@ public class SearchResultsPage extends BasePage{
 
     public boolean isResultEmpty() {
         return itemsCount() == 0;
-    }
-
-    @Override
-    public void checkPage() {
-
     }
 
     public String getFirstResultTitle() {

@@ -3,8 +3,9 @@ package rozetka;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 
-public class ProductPage extends BasePage{
+public class ProductPage extends BasePage {
     private static final By BUY_BUTTON = new By.ByXPath("//button[@aria-label='Купити']");
 
     public ProductPage(WebDriver driver) {
@@ -13,7 +14,8 @@ public class ProductPage extends BasePage{
 
     @Override
     public void checkPage() {
-
+        By productSection = new By.ByXPath("//product-tab-main");
+        Assert.assertTrue(driver.findElement(productSection).isDisplayed());
     }
 
     public void byProduct() {

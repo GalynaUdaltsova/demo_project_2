@@ -16,7 +16,7 @@ public class CartPage extends BasePage{
 
     @Override
     public void checkPage() {
-        By cartHeader = new By.ByXPath("//div[@class='modal__header']");
+        By cartHeader = new By.ByXPath("//div[@class='modal__header']//*[@class='modal__heading'][contains(text(),'Кошик ')]");
         Assert.assertTrue(driver.findElement(cartHeader).isDisplayed());
     }
 
