@@ -1,5 +1,6 @@
 package rozetka;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -27,6 +28,7 @@ public class HomePage extends BasePage {
         Assert.assertEquals(title, HOME_PAGE_TITLE);
     }
 
+    @Step("Login")
     public void login() {
         driver.get(HOME_PAGE_URL);
         driver.findElement(USER_ICON).click();
@@ -34,12 +36,14 @@ public class HomePage extends BasePage {
         signInPage.login();
     }
 
+    @Step("Enter to cabinet")
     public void enterToCabinet() {
         driver.findElement(BURGER_MENU).click();
         driver.findElement(PERSONAL_INFO).click();
         wait.until(ExpectedConditions.visibilityOfElementLocated(PERSONAL_DATA));
     }
 
+    @Step("Show product by criteria")
     public void showProductByCriteria(String criteriaValue) {
         driver.findElement(SEARCH_INPUT).sendKeys(criteriaValue);
         driver.findElement(SEARCH_SUBMIT).click();

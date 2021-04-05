@@ -1,4 +1,3 @@
-import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.SkipException;
 import org.testng.annotations.DataProvider;
@@ -6,17 +5,17 @@ import org.testng.annotations.Test;
 import rozetka.HomePage;
 import rozetka.SearchResultsPage;
 
-public class HomePageTest extends BaseTest{
+public class HomePageTest extends BaseTest {
 
 
     @DataProvider(name = "search")
     public Object[][] search() {
-        return new Object[][] {
-                { "Apple iPhone 11"},
-                { "Xiaomi Redmi 9A"},
-                { "Samsung Galaxy"},
-                { "MacBook"},
-                { "abcdefghijklmnopqrstuvwxyz"},
+        return new Object[][]{
+                {"Apple iPhone 11"},
+                {"Xiaomi Redmi 9A"},
+                {"Samsung Galaxy"},
+                {"MacBook"},
+                {"abcdefghijklmnopqrstuvwxyz"},
         };
     }
 

@@ -1,5 +1,6 @@
 package rozetka;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
@@ -15,10 +16,10 @@ public class SignInPage extends BasePage {
 
     @Override
     public void checkPage() {
-
         Assert.assertTrue(driver.findElement(CART_HEADER).isDisplayed());
     }
 
+    @Step("Login")
     public void login() {
         driver.findElement(GOOGLE).click();
     }

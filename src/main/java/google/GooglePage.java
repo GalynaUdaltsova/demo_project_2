@@ -1,5 +1,6 @@
 package google;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -19,6 +20,7 @@ public class GooglePage {
         this.driver = driver;
     }
 
+    @Step("Login to the Google account")
     public void loginToTheGoogleAccount(String email, String password) {
         driver.get(GOOGLE_URL);
         WebElement element1 = driver.findElement(INPUT_EMAIL);

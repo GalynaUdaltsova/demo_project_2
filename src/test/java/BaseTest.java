@@ -3,7 +3,9 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.ITestResult;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
 import rozetka.HomePage;
 
 import java.io.File;
@@ -33,7 +35,7 @@ public class BaseTest {
     }
 
     @BeforeMethod
-    public void openBrowser(){
+    public void openBrowser() {
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         driver.get(HomePage.HOME_PAGE_URL);
@@ -49,7 +51,7 @@ public class BaseTest {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-    }
+        }
         driver.quit();
     }
 }
