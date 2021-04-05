@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
-public class SignInPage extends BasePage{
+public class SignInPage extends BasePage {
     public static final String CABINET_PAGE_URL = "ROZETKA — Особисті дані | Особистий кабінет";
     private static final By GOOGLE = new By.ByXPath("//button[contains(text(), ' Google')]");
 

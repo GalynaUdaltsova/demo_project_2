@@ -11,7 +11,7 @@ import org.testng.SkipException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SearchResultsPage extends BasePage{
+public class SearchResultsPage extends BasePage {
 
     private static final By ITEM = By.xpath("//span[@class='goods-tile__title'][1]");
     private static final By CART_BUTTON = new By.ByXPath("//rz-cart/button");
@@ -45,7 +45,7 @@ public class SearchResultsPage extends BasePage{
     }
 
     public void addProductsToCart(int count) {
-        new WebDriverWait(driver, 20).until(ExpectedConditions.elementToBeClickable(ADD_TO_CART_BUTTON));
+        wait.until(ExpectedConditions.elementToBeClickable(ADD_TO_CART_BUTTON));
         List<WebElement> addProductToCartElements = driver.findElements(ADD_TO_CART_BUTTON);
         for (int i = 0; i < count; i++) {
             addProductToCartElements.get(i).click();
@@ -53,9 +53,9 @@ public class SearchResultsPage extends BasePage{
     }
 
     public void openCart() {
-        new WebDriverWait(driver, 20).until(ExpectedConditions.elementToBeClickable(CART_BUTTON));
+        wait.until(ExpectedConditions.elementToBeClickable(CART_BUTTON));
         driver.findElement(CART_BUTTON).click();
-        new WebDriverWait(driver, 20).until(ExpectedConditions.visibilityOfElementLocated(CART_HEADER));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(CART_HEADER));
         driver.findElement(CART_HEADER);
     }
 
