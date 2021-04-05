@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 public class CartPage extends BasePage{
     public static final By EMPTY_CART_TITLE = new By.ByXPath("//h4[@class='cart-dummy__heading']");
@@ -15,7 +16,8 @@ public class CartPage extends BasePage{
 
     @Override
     public void checkPage() {
-
+        By cartHeader = new By.ByXPath("//div[@class='modal__header']");
+        Assert.assertTrue(driver.findElement(cartHeader).isDisplayed());
     }
 
     public void deleteProductsFromCart(int count) {
