@@ -21,5 +21,5 @@ All dependencies included in file [pom.xml](/pom.xml) and should install automat
 
 In case of some problems, make sure that you have [Java](http://www.java.com/) and [Maven](http://maven.apache.org/) installed on your system.
 
-In order to run tests in CHROME browser you need [chromedriver](http://code.google.com/p/chromedriver/downloads/list), we included it in our project, it is locaded in the [browserDriversl](/browserDrivers) folder [here](/browserDrivers/chromedriver.exe).
+In order to run tests in CHROME browser you need [chromedriver](https://chromedriver.chromium.org/downloads), we included drivers for Windows and Mac. 
 
