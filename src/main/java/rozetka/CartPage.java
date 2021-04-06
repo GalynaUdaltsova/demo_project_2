@@ -8,7 +8,7 @@ import org.testng.Assert;
 
 public class CartPage extends BasePage {
     public static final By EMPTY_CART_TITLE = new By.ByXPath("//h4[@class='cart-dummy__heading']");
-    public static final By CART_HEADER = new By.ByXPath("//div[@class='modal__header']//*[@class='modal__heading'][contains(text(),'Кошик ')]");
+    public static final By CART_HEADER = new By.ByXPath("//div[@class='modal__header']//*[@class='modal__heading']");
     private static final By CART_ACTION_BTN = new By.ByXPath("//button[contains(@id,'cartProductActions')]");
     private static final By DEL_BTN = new By.ByXPath("//ul[contains(@id,'cartProductActions')]//button[contains(text(),'Видалити')]");
 
