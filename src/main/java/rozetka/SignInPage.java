@@ -8,7 +8,7 @@ import org.testng.Assert;
 public class SignInPage extends BasePage {
     public static final String CABINET_PAGE_URL = "ROZETKA — Особисті дані | Особистий кабінет";
     private static final By GOOGLE = new By.ByXPath("//button[contains(text(), ' Google')]");
-    private static final By CART_HEADER = new By.ByXPath("//div[@class='modal__header']//*[@class='modal__heading'][contains(text(),'Вхід')]");
+    private static final By CART_HEADER = new By.ByXPath("//div[@class='modal__header']//*[@class='modal__heading']");
 
     public SignInPage(WebDriver driver) {
         super(driver);
